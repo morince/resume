@@ -88,7 +88,7 @@ body {
     resize: none;
     font-family: 'Roboto', sans-serif;
 }
-.signin-form input[type="text"],.signin-form input[type="email"] {
+.signin-form input[type="text"],.signin-form input[type="email"],.signin-form input[type="password"] {
     margin: 0 0 1em 0;
 }
 .signin-form input[type="checkbox"] {

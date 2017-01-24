@@ -40,7 +40,7 @@ public class MyblogController {
 	}
 
 	/**
-	 * 首页
+	 * 登录界面
 	 * 
 	 * @param model
 	 * @return
@@ -90,4 +90,37 @@ public class MyblogController {
 		return "login2";
 	}
 
+	
+	/**
+	 * 注册界面
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/signup")
+	public String regsiter() {
+		return "register";
+	}
+	
+	/**
+	 * 注册界面，校对，存储到session中
+	 * 
+	 * @param userName
+	 * @param password
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/api/register", method = RequestMethod.POST)
+	public @ResponseBody Model apiRegister(String userName, String password,String email, Model model, HttpServletRequest request) {
+		request.getParameter("userName");
+		System.out.println(request.getParameter("userName")+":"+password);
+		model.addAttribute("code", 200);
+		model.addAttribute("message", "成功");
+		model.addAttribute("result", true);
+		return model;
+		
+	}
+	
+	
 }
