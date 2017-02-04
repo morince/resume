@@ -48,7 +48,7 @@ function checkPass(){
 							location.href = '/login';
 						},
 						error:function(message){
-							alert('注册失败');
+							alert(message);
 							isSubmiting = false;
 						}
 					});

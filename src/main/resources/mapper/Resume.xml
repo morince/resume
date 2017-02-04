@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.myblog.dao.ResumeDao">
+	<insert id="saveProfile">
+		insert into
+		Resume(resumeId,userId,jobTitle,name,gender,address,userEmail,advantage,education,skills,experience,createDate,photos,status)
+		values(#{Resume.resumeId},#{Resume.userId},#{Resume.jobTitle},#{Resume.name},#{Resume.gender},
+		#{Resume.address},#{Resume.userEmail},#{Resume.advantage},#{Resume.education},#{Resume.skills},
+		#{Resume.experience},NOW(),#{Resume.photos},#{Resume.status})
+	</insert>
+
+
+	<!-- 获取序列主键 -->
+	<select id="getResumeSeq" resultType="Integer">
+		SELECT NEXTVAL(#{seqName})
+
+	</select>
+
+	<!-- 获取序列主键 -->
+	<select id="resetSeq" resultType="Integer">
+		SELECT SETVAL(#{seqName}, 0)
+
+	</select>
+
+
+
+</mapper>

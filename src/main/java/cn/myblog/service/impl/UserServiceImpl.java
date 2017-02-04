@@ -1,7 +1,11 @@
 package cn.myblog.service.impl;
 
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.myblog.dao.UserDao;
+import cn.myblog.entity.UserForWeb;
 import cn.myblog.entity.UserInfo;
 import cn.myblog.service.UserService;
 import cn.myblog.utils.AESUtil;
@@ -16,6 +20,8 @@ import cn.myblog.utils.AESUtil;
  */
 @Service
 public class UserServiceImpl implements UserService {
+	@Autowired
+	private UserDao dao;
 
 	public UserInfo getUserInfo(String userName) {
 		UserInfo user = new UserInfo();
@@ -26,15 +32,23 @@ public class UserServiceImpl implements UserService {
 	public boolean login(String userName, String password) {
 		System.out.println(userName);
 		System.out.println(password);
-		
-		
 		if (AESUtil.validate(password)) {
-			System.out.println(userName + ":" + password);
-			return true;
-
+			int count = dao.login(userName, password);
+			if (count == 1) {
+				System.out.println(userName + ":" + password);
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
+	}
+
+	public boolean registerUser(JSONObject jsonObj) {
+		UserForWeb user = UserForWeb.setUser(jsonObj);
+		dao.registry(user);
+		return true;
 	}
 
 }

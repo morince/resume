@@ -91,18 +91,7 @@
 	Layer.prototype = {
 		init:function(){
 			this.isConfirmed = false;
-			this.template ='<div class="m-winwrapper">\
-							    <div class="winwrapper">\
-							        <div class="m-win m-win-simple">\
-							            <div class="winhd"><h2 class="wintt">{title}</h2></div>\
-							            <div class="winbd">{content}</div>\
-							            <div class="winft">\
-							                <button type="button" class="u-btn u-btn-primary u-btn-fw" data-action="confirm">{confirmText}</button>\
-							                <button type="button" class="u-btn u-btn-normal u-btn-fw" data-action="cancel">取消</button>\
-							            </div>\
-							        </div>\
-							    </div>\
-							</div>';
+			this.template ='<div class="v-load {class}"><div class="load"><i></i><b></b></div></div>';
 			this.body = d.createElement('div');
 			this.body.style.display = 'none';
 			d.body.appendChild(this.body);
@@ -155,7 +144,7 @@
 	}
 	Loading.prototype = {
 		init:function(){
-			this.template ='<div class="v-load {class}"><div class="load"><i></i><b>{message}</b></div></div>';
+			this.template ='<div class="v-load {class}"><div class="load"><i></i><b></b></div></div>';
 			this.body = d.createElement('div');
 			this.body.style.display = 'none';
 			this.timer = null;

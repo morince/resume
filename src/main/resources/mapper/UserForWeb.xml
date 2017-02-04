@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.myblog.dao.UserDao">
+<insert id="registry">
+		insert into
+		UserForWeb(userN,userP,userEmail,createDate)
+		values(#{UserForWeb.userN},#{UserForWeb.userP},#{UserForWeb.userEmail},CURDATE())
+</insert>
+
+<!-- 查找用户名和密码，查看是否匹配 -->
+<!-- 当dao层使用注解绑定参数是，其mapper对应的便是注解中的参数名 -->
+<select id="login" resultType="Integer" >
+		select count(0) from UserForWeb 
+		where userN=#{userN} and userP=#{userP}
+</select>
+
+</mapper>

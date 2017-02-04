@@ -25,6 +25,7 @@
 							location.href = '/';
 						},
 						error:function(message){
+							alert(message);
 							loading.result(message||'登录失败');
 							isSubmiting = false;
 						}
